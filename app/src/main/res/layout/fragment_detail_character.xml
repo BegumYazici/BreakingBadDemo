@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="characterModel"
+            type="com.begicim.singking.ui.character.model.CharacterUIModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackgroundLayout"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/detail_page_padding"
+        tools:context=".ui.detail.DetailFragment">
+
+        <ImageView
+            android:layout_width="@dimen/detail_page_image_width"
+            android:layout_height="@dimen/detail_page_image_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/detail_image_margin_top"
+            app:imageUrl="@{characterModel.img}"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/detail_text_margin_top"
+            android:text="@{characterModel.name}"
+            android:textSize="@dimen/detail_page_text_size"
+            tools:text="Bryan Cranston" />
+
+        <TextView
+            android:id="@+id/birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@{characterModel.birthday}"
+            android:textSize="@dimen/detail_page_text_size"
+            tools:text="10.10.1963" />
+
+        <TextView
+            android:id="@+id/portrayed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@{characterModel.portrayed}"
+            android:textSize="@dimen/detail_page_text_size"
+            tools:text="Walter White" />
+    </LinearLayout>
+</layout>
