@@ -1,8 +1,10 @@
 package com.begicim.singking.network
 
+import androidx.annotation.Keep
 import com.begicim.singking.ui.character.model.CharacterUIModel
 import com.squareup.moshi.Json
 
+@Keep
 data class CharacterModel(
     @field:Json(name = "char_id")
     val id: Int,
@@ -18,10 +20,7 @@ fun CharacterModel.toCharacterUIModel(): CharacterUIModel {
 }
 
 fun List<CharacterModel>.toListCharacterUIModel(): List<CharacterUIModel> {
-    val characterUIList = mutableListOf<CharacterUIModel>()
-
-    for (i in this) {
-        characterUIList.add(i.toCharacterUIModel())
+    return this.map { characterModel ->
+        characterModel.toCharacterUIModel()
     }
-    return characterUIList
 }

@@ -7,4 +7,9 @@
     <dimen name="detail_image_margin_top">30dp</dimen>
     <dimen name="detail_text_margin_top">10dp</dimen>
     <dimen name="detail_page_padding">10dp</dimen>
+    <dimen name="character_item_padding">10dp</dimen>
+    <dimen name="character_item_margin">10dp</dimen>
+    <dimen name="character_item_image_width">120dp</dimen>
+    <dimen name="character_item_image_height">120dp</dimen>
+    <dimen name="character_item_width">140dp</dimen>
 </resources>

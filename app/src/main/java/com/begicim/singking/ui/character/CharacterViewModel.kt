@@ -33,15 +33,14 @@ class CharacterViewModel constructor(
 
     fun getCharacters() {
         coroutineScope.launch {
-            val characterList = characterApiService.getCharacterList()
-            _status.value = ApiStatus.LOADING
-
             try {
+                val characterList = characterApiService.getCharacterList()
+                _status.value = ApiStatus.LOADING
+
                 val serviceResponse = characterList.await()
 
                 _characterList.value = serviceResponse.toListCharacterUIModel()
                 _status.value = ApiStatus.SUCCESS
-
             } catch (e: Exception) {
                 _status.value = ApiStatus.ERROR
             }

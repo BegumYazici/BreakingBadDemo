@@ -9,13 +9,12 @@ import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
-import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.BDDMockito.given
 import org.mockito.Mockito
 import org.mockito.Mockito.verify
-import java.lang.IllegalArgumentException
 
 class CharacterViewModelTest {
 
@@ -37,26 +36,24 @@ class CharacterViewModelTest {
 
     @Test
     fun `when getCharacters() return data api status should be Success`() = runBlockingTest {
-
         val dummyServiceResponse =
             listOf(CharacterModel(1, "Walter", "1.1.1963", "", "", ""))
 
-        given(characterApiService.getCharacterList()).willReturn(CompletableDeferred(dummyServiceResponse))
+        given(characterApiService.getCharacterList())
+            .willReturn(CompletableDeferred(dummyServiceResponse))
 
         characterViewModel.getCharacters()
 
-        Assert.assertEquals(ApiStatus.SUCCESS, characterViewModel.status.value)
+        assertEquals(ApiStatus.SUCCESS, characterViewModel.status.value)
     }
 
     @Test
-    fun `when getCharacters got an error api status should be error`(){
+    fun `when getCharacters got an error api status should be error`() {
+        given(characterApiService.getCharacterList()).willThrow(IllegalArgumentException::class.java)
 
         characterViewModel.getCharacters()
 
-        given(characterApiService.getCharacterList()).willThrow(IllegalArgumentException::class.java)
-
-        Assert.assertEquals(ApiStatus.ERROR, characterViewModel.status.value)
-
+        assertEquals(ApiStatus.ERROR, characterViewModel.status.value)
     }
 
     @After

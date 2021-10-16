@@ -10,24 +10,25 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/character_item_width"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:background="@color/itemBackgroundColor"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:layout_margin="@dimen/character_item_margin"
+        android:padding="@dimen/character_item_padding">
 
         <ImageView
             android:id="@+id/characterImage"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="@dimen/character_item_image_width"
+            android:layout_height="@dimen/character_item_image_height"
             android:layout_gravity="center"
             android:scaleType="centerInside"
             app:imageUrl="@{characterModel.img}"
             tools:src="@drawable/ic_launcher_background" />
 
+
         <TextView
-            android:layout_width="140dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"

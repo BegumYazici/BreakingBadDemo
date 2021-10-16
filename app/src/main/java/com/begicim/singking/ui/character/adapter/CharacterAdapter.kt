@@ -5,19 +5,20 @@ import android.view.ViewGroup
 import android.widget.Filter
 import androidx.recyclerview.widget.RecyclerView
 import com.begicim.singking.databinding.ItemCharacterBinding
-import com.begicim.singking.network.CharacterModel
 import com.begicim.singking.ui.character.model.CharacterUIModel
 
-class CharacterAdapter(private var characterList: MutableList<CharacterUIModel> = mutableListOf(), val clickListener: CharacterClickListener) :
-    RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
+class CharacterAdapter(
+    private var characterList: MutableList<CharacterUIModel> = mutableListOf(),
+    val clickListener: CharacterClickListener
+) : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
-    fun updateList(characterList: MutableList<CharacterUIModel>){
+    private val initialCityDataList = ArrayList<CharacterUIModel>()
+
+    fun updateList(characterList: MutableList<CharacterUIModel>) {
         initialCityDataList.clear()
         initialCityDataList.addAll(characterList)
         this.characterList = characterList
     }
-
-    val initialCityDataList = ArrayList<CharacterUIModel>()
 
     class CharacterViewHolder(private val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -61,7 +62,7 @@ class CharacterAdapter(private var characterList: MutableList<CharacterUIModel> 
                 val query = constraint.toString().trim()
 
                 initialCityDataList.filter {
-                    it.name.contains(query,true)
+                    it.name.contains(query, true)
                 }.apply {
                     filteredList.addAll(this)
                 }

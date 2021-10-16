@@ -30,7 +30,7 @@ class CharacterFragment : Fragment() {
     private val characterAdapter =
         CharacterAdapter(clickListener = object : CharacterClickListener {
             override fun onCharacterClicked(character: CharacterUIModel) {
-                detailClickListener?.detailClickListener(character)
+                detailClickListener?.onDetailClicked(character)
             }
         })
 
@@ -75,4 +75,7 @@ class CharacterFragment : Fragment() {
         return characterBinding.root
     }
 
+    companion object{
+        const val TAG = "CharacterFragment"
+    }
 }
